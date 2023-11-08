@@ -17,17 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-
-enum dilemma_keymap_layers {
-    _BASE = 0,
-    _NAV,
-    _NUM,
-    _MOUSE,
-    _SYM,
-    _MEDIA,
-    _FUN,
-    _MISC
-};
+#include "cufarvid.h"
 
 // Automatically enable sniping-mode on the pointer layer.
 // #define DILEMMA_AUTO_SNIPING_ON_LAYER LAYER_POINTER
@@ -52,12 +42,12 @@ enum dilemma_keymap_layers {
 // Left-hand home row mods
 #define GUI_A  LGUI_T(KC_A)
 #define ALT_R  LALT_T(KC_R)
-#define SFT_S  LSFT_T(KC_S)
-#define CTRL_T LCTL_T(KC_T)
+#define CTL_S  LCTL_T(KC_S)
+#define SHFT_T LSFT_T(KC_T)
 
 // Right-hand home row mods
-#define CTRL_N RCTL_T(KC_N)
-#define SFT_E  RSFT_T(KC_E)
+#define SHFT_N RSFT_T(KC_N)
+#define CTL_E  RCTL_T(KC_E)
 #define ALT_I  LALT_T(KC_I)
 #define GUI_O  RGUI_T(KC_O)
 
@@ -73,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         KC_ESC,  KC_1,  KC_2,    KC_3,      KC_4,    KC_5,      KC_6,    KC_7,     KC_8,    KC_9,   KC_0,    KC_MINS,
         KC_TAB,  KC_Q,  KC_W,    KC_F,      KC_P,    KC_B,      KC_J,    KC_L,     KC_U,    KC_Y,   KC_SCLN, KC_BSLS,
-        KC_LSFT, GUI_A, ALT_R,   SFT_S,     CTRL_T,  KC_G,      KC_M,    CTRL_N,   SFT_E,   ALT_I,  GUI_O,   KC_QUOT,
+        KC_LSFT, GUI_A, ALT_R,   CTL_S,     SHFT_T,  KC_G,      KC_M,    SHFT_N,   CTL_E,   ALT_I,  GUI_O,   KC_QUOT,
         KC_LCTL, PT_Z,  KC_X,    KC_C,      KC_D,    KC_V,      KC_K,    KC_H,     KC_COMM, KC_DOT, PT_SLSH, KC_RALT,
                         KC_LALT, ESC_MEDIA, SPC_NAV, TAB_MOUSE, ENT_SYM, BSPC_NUM, DEL_FUN, KC_MUTE
     ),
@@ -129,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MISC] = LAYOUT(
         QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
         EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CG_TOGG,
         XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX
     ),
