@@ -1,4 +1,3 @@
 VIA_ENABLE = yes
 ENCODER_MAP_ENABLE = yes
-
-SRC += cufarvid.c
+CAPS_WORD_ENABLE = yes
