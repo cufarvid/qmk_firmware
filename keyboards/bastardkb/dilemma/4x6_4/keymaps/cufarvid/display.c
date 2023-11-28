@@ -52,6 +52,8 @@ const char *layer_name(void) {
             return "Fun";
         case _MISC:
             return "Misc";
+        case _UTF:
+            return "Unicode";
         default:
             return "Unknown";
     }
