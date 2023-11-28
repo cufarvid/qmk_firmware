@@ -8,5 +8,6 @@ enum keymap_layers {
     _SYM,
     _MEDIA,
     _FUN,
-    _MISC
+    _MISC,
+    _UTF
 };

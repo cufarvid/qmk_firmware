@@ -1,5 +1,6 @@
 #include "qp.h"
 #include "print.h"
+#include <stdio.h>
 #include "os_detection.h"
 #include "cufarvid.h"
 #include "generated/fira-code-nerd.qff.h"

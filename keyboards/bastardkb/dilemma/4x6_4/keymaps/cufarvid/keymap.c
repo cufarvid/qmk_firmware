@@ -29,8 +29,9 @@
 #define ENT_SYM   LT(_SYM,   KC_ENT)
 #define ESC_MEDIA LT(_MEDIA, KC_ESC)
 #define DEL_FUN   LT(_FUN,   KC_DEL)
-#define PT_Z      LT(_MISC,  KC_Z)
-#define PT_SLSH   LT(_MISC,  KC_SLSH)
+#define SLSH_UTF  LT(_UTF,   KC_SLSH)
+#define LCTL_MISC LT(_MISC,  KC_LCTL)
+#define RALT_MISC LT(_MISC,  KC_RALT)
 
 // Clipboard shortcuts
 #define U_RDO C(KC_Y)
@@ -51,6 +52,12 @@
 #define ALT_I  LALT_T(KC_I)
 #define GUI_O  RGUI_T(KC_O)
 
+enum keycodes {
+    U_SI_SS = SAFE_RANGE,
+    U_SI_ZS,
+    U_SI_CS,
+};
+
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
 #    define DPI_MOD KC_NO
@@ -61,10 +68,10 @@
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-        KC_ESC,  KC_1,  KC_2,    KC_3,      KC_4,    KC_5,      KC_6,    KC_7,     KC_8,    KC_9,   KC_0,    KC_MINS,
-        KC_TAB,  KC_Q,  KC_W,    KC_F,      KC_P,    KC_B,      KC_J,    KC_L,     KC_U,    KC_Y,   KC_SCLN, KC_BSLS,
-        KC_LSFT, GUI_A, ALT_R,   CTL_S,     SHFT_T,  KC_G,      KC_M,    SHFT_N,   CTL_E,   ALT_I,  GUI_O,   KC_QUOT,
-        KC_LCTL, PT_Z,  KC_X,    KC_C,      KC_D,    KC_V,      KC_K,    KC_H,     KC_COMM, KC_DOT, PT_SLSH, KC_RALT,
+        KC_ESC,    KC_1,  KC_2,    KC_3,      KC_4,    KC_5,      KC_6,    KC_7,     KC_8,    KC_9,   KC_0,       KC_MINS,
+        KC_TAB,    KC_Q,  KC_W,    KC_F,      KC_P,    KC_B,      KC_J,    KC_L,     KC_U,    KC_Y,   KC_SCLN,    KC_BSLS,
+        KC_LSFT,   GUI_A, ALT_R,   CTL_S,     SHFT_T,  KC_G,      KC_M,    SHFT_N,   CTL_E,   ALT_I,  GUI_O,      KC_QUOT,
+        LCTL_MISC, KC_Z,  KC_X,    KC_C,      KC_D,    KC_V,      KC_K,    KC_H,     KC_COMM, KC_DOT, SLSH_UTF, RALT_MISC,
                         KC_LALT, ESC_MEDIA, SPC_NAV, TAB_MOUSE, ENT_SYM, BSPC_NUM, DEL_FUN, KC_MUTE
     ),
 
@@ -97,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
         XXXXXXX, KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                          XXXXXXX, KC_LPRN, KC_GRV,  KC_UNDS, XXXXXXX, XXXXXXX, _______, XXXXXXX
+                          XXXXXXX, KC_LPRN, KC_RPRN, KC_UNDS, XXXXXXX, XXXXXXX, _______, XXXXXXX
     ),
 
     [_MEDIA] = LAYOUT(
@@ -120,8 +127,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
         EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR,
         CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CG_TOGG,
-        XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
-                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    ),
+
+    [_UTF] = LAYOUT(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, U_SI_SS, XXXXXXX, UC_PREV, XXXXXXX, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, XXXXXXX,
+        XXXXXXX, U_SI_ZS, XXXXXXX, U_SI_CS, XXXXXXX, UC_NEXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
+                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     ),
 };
 // clang-format on
@@ -151,6 +166,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [_MEDIA]      = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
     [_FUN]        = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
     [_MISC]       = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
+    [_UTF]        = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D), ENCODER_CCW_CW(KC_VOLU, KC_VOLD)},
 };
 // clang-format on
 #endif // ENCODER_MAP_ENABLE
@@ -160,4 +176,31 @@ void shutdown_user(void) {
     rgb_matrix_sethsv_noeeprom(HSV_RED);
     rgb_matrix_update_pwm_buffers();
 #endif // RGB_MATRIX_ENABLE
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    const bool is_shifted = get_mods() & MOD_MASK_SHIFT;
+
+    switch (keycode) {
+        case U_SI_CS:
+            if (record->event.pressed) {
+                is_shifted ? send_unicode_string("Č") : send_unicode_string("č");
+            }
+            return false;
+
+        case U_SI_SS:
+            if (record->event.pressed) {
+                is_shifted ? send_unicode_string("Š") : send_unicode_string("š");
+            }
+            return false;
+
+        case U_SI_ZS:
+            if (record->event.pressed) {
+                is_shifted ? send_unicode_string("Ž") : send_unicode_string("ž");
+            }
+            return false;
+
+        default:
+          return true;
+    }
 }
