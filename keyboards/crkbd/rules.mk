@@ -10,7 +10,7 @@ NKRO_ENABLE = yes           # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
-RGB_MATRIX_ENABLE = no
+RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
 LTO_ENABLE = yes
 
@@ -21,3 +21,6 @@ DEFAULT_FOLDER = crkbd/rev1
 
 RGBLIGHT_SUPPORTED = yes
 RGB_MATRIX_SUPPORTED = yes
+
+# For Frood (RP2040 based)
+CONVERT_TO = elite_pi
