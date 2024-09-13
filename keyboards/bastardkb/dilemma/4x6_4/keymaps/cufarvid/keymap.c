@@ -69,7 +69,7 @@ enum keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         KC_ESC,    KC_1,  KC_2,    KC_3,      KC_4,    KC_5,      KC_6,    KC_7,     KC_8,    KC_9,   KC_0,       KC_MINS,
-        KC_TAB,    KC_Q,  KC_W,    KC_F,      KC_P,    KC_B,      KC_J,    KC_L,     KC_U,    KC_Y,   KC_SCLN,    KC_BSLS,
+        KC_TAB,    KC_Q,  KC_W,    KC_F,      KC_P,    KC_B,      KC_J,    KC_L,     KC_U,    KC_Y,   KC_QUOT,    KC_BSLS,
         KC_LSFT,   GUI_A, ALT_R,   CTL_S,     SHFT_T,  KC_G,      KC_M,    SHFT_N,   CTL_E,   ALT_I,  GUI_O,      KC_QUOT,
         LCTL_MISC, KC_Z,  KC_X,    KC_C,      KC_D,    KC_V,      KC_K,    KC_H,     KC_COMM, KC_DOT, SLSH_UTF, RALT_MISC,
                         KC_LALT, ESC_MEDIA, SPC_NAV, TAB_MOUSE, ENT_SYM, BSPC_NUM, DEL_FUN, KC_MUTE
